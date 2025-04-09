@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://0tbyjmgrxf4g"]
+
+[ext_resource type="Script" uid="uid://ct5h5rwgveipi" path="res://player/player.gd" id="1_w5884"]
+[ext_resource type="Texture2D" uid="uid://dymk06f3v66lp" path="res://assets/characters/Jasmine_Boots_blue.png" id="2_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://bg4dtpp5mnab3" path="res://assets/characters/Jasmine_Boots_black.png" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://da7nw7oirx4ak" path="res://assets/characters/Jasmine_Boots_red.png" id="4_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://clbxv1v7yty5b" path="res://assets/characters/Jasmine_Boots.png" id="5_boad6"]
+[ext_resource type="Texture2D" uid="uid://d02ff1j88ygg6" path="res://assets/characters/Jasmine_Boots_rainbow.png" id="5_rgyib"]
+[ext_resource type="AudioStream" uid="uid://burf0uxifswjt" path="res://assets/audio/jump.wav" id="6_boad6"]
+[ext_resource type="AudioStream" uid="uid://0r6l7g78t1eu" path="res://assets/audio/hurt.wav" id="7_rgyib"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgyib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qjkh3")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rkbax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_boad6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qjkh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rgyib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g6k8r")
+}],
+"loop": true,
+"name": &"rainbow",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g6k8r")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_boad6")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n57ph"]
+size = Vector2(1750, 6150)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 11
+floor_snap_length = 8.0
+script = ExtResource("1_w5884")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.015, 0.015)
+sprite_frames = SubResource("SpriteFrames_rgyib")
+frame_progress = 0.604237
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 4.5)
+scale = Vector2(0.02, 0.02)
+shape = SubResource("RectangleShape2D_n57ph")
+
+[node name="Camera2d" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_bottom = 2112
+editor_draw_limits = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_boad6")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rgyib")

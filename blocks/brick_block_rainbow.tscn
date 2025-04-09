@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://hu0hs1j5xhfs"]
+
+[ext_resource type="Script" uid="uid://xrhy7lccqro7" path="res://blocks/question_block.gd" id="1_a5i1o"]
+[ext_resource type="PackedScene" uid="uid://bwhqixo6ql762" path="res://items/boots_blue.tscn" id="2_ng1om"]
+[ext_resource type="PackedScene" uid="uid://87106qdkrntn" path="res://items/boots_yellow.tscn" id="3_hp741"]
+[ext_resource type="PackedScene" uid="uid://dcp8s4ty8wd7b" path="res://items/boots_rainbow.tscn" id="4_p3t13"]
+[ext_resource type="PackedScene" uid="uid://bvg12eh4jrmvb" path="res://items/coin.tscn" id="5_vtt8h"]
+[ext_resource type="PackedScene" uid="uid://bl0ej5346csgt" path="res://items/shoe_glue.tscn" id="6_5aaxy"]
+[ext_resource type="Texture2D" uid="uid://ygovxv6g43gv" path="res://assets/blocks/brick.png" id="7_i01af"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc25m"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2ra5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i01af")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i01af")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ra5"]
+size = Vector2(64, 66)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_a5i1o")
+boots_blue = ExtResource("2_ng1om")
+boots_yellow = ExtResource("3_hp741")
+boots_rainbow = ExtResource("4_p3t13")
+coin = ExtResource("5_vtt8h")
+shoe_glue = ExtResource("6_5aaxy")
+item = "boots_rainbow"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xc25m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k2ra5")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_k2ra5")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

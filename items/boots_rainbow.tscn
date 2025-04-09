@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcp8s4ty8wd7b"]
+
+[ext_resource type="Script" uid="uid://c3xkix0pl8786" path="res://items/boots_rainbow.gd" id="1_nx5ld"]
+[ext_resource type="Texture2D" uid="uid://darx7jd0xor17" path="res://assets/items/boots_rainbow.png" id="2_6t34s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfw8"]
+size = Vector2(62, 62)
+
+[node name="BootsRainbow" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_nx5ld")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, 5)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("2_6t34s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cbfw8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

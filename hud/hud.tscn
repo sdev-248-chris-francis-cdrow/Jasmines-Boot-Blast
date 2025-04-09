@@ -1,0 +1,295 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvdu1bp342y51"]
+
+[ext_resource type="Script" uid="uid://dkpdb7134dfgj" path="res://hud/hud.gd" id="1_6ca3a"]
+[ext_resource type="Texture2D" uid="uid://osj5qpct04km" path="res://assets/background/game_over.png" id="2_2gk58"]
+[ext_resource type="Texture2D" uid="uid://7tq28lxeqpye" path="res://assets/enemies/boot_witch.png" id="3_318vg"]
+[ext_resource type="Texture2D" uid="uid://di1mo242dyk7o" path="res://assets/enemies/boot_goblin.png" id="4_w8tcp"]
+[ext_resource type="Script" uid="uid://2j0x0fysqhjh" path="res://hud/menu_button.gd" id="5_fjv1a"]
+[ext_resource type="Script" uid="uid://bdyv20p8w22h2" path="res://hud/exit_button.gd" id="6_0ivg5"]
+[ext_resource type="Script" uid="uid://d3t7mgrcau14j" path="res://hud/start_button.gd" id="7_0ivg5"]
+[ext_resource type="Texture2D" uid="uid://dlwbgpebnycpm" path="res://assets/background/start.png" id="7_1kkc0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ca3a"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gk58"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_318vg"]
+font_size = 110
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8tcp"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fjv1a"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ivg5"]
+font_size = 32
+
+[node name="MasterLayer" type="CanvasLayer"]
+script = ExtResource("1_6ca3a")
+
+[node name="GameDisplay" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Lives" type="Label" parent="GameDisplay"]
+offset_left = 14.0
+offset_top = 45.0
+offset_right = 203.0
+offset_bottom = 175.0
+text = "3x Lives"
+label_settings = SubResource("LabelSettings_6ca3a")
+
+[node name="Score" type="Label" parent="GameDisplay"]
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 229.0
+offset_bottom = 163.0
+text = "000000 Score
+"
+label_settings = SubResource("LabelSettings_2gk58")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="GameOver"]
+position = Vector2(582, 383.5)
+scale = Vector2(0.634259, 0.532639)
+texture = ExtResource("2_2gk58")
+
+[node name="BootWitch" type="Sprite2D" parent="GameOver"]
+position = Vector2(575, 484)
+scale = Vector2(0.187135, 0.187135)
+texture = ExtResource("3_318vg")
+
+[node name="BootGoblinL" type="Sprite2D" parent="GameOver"]
+position = Vector2(455, 553)
+scale = Vector2(0.111354, 0.111354)
+texture = ExtResource("4_w8tcp")
+
+[node name="BootGoblinR" type="Sprite2D" parent="GameOver"]
+position = Vector2(659, 559)
+scale = Vector2(0.111354, 0.111354)
+texture = ExtResource("4_w8tcp")
+flip_h = true
+
+[node name="GameOverText" type="Label" parent="GameOver"]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_318vg")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GameOver"]
+offset_left = 30.0
+offset_top = 194.0
+offset_right = 1124.0
+offset_bottom = 642.0
+text = "The boot witch and her evil army of boot goblins have stolen the power of Jasmine's magic boots and are now starting to take over the world!!!"
+label_settings = SubResource("LabelSettings_w8tcp")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MenuButton" type="Button" parent="GameOver"]
+offset_left = 54.0
+offset_top = 410.0
+offset_right = 394.0
+offset_bottom = 518.0
+action_mode = 0
+script = ExtResource("5_fjv1a")
+
+[node name="Label" type="Label" parent="GameOver/MenuButton"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 108.0
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_fjv1a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="GameOver"]
+offset_left = 765.0
+offset_top = 415.0
+offset_right = 1105.0
+offset_bottom = 523.0
+action_mode = 0
+script = ExtResource("6_0ivg5")
+
+[node name="Label" type="Label" parent="GameOver/ExitButton"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 108.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_0ivg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Win" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="Win"]
+position = Vector2(582, 383.5)
+scale = Vector2(0.634259, 0.532639)
+texture = ExtResource("7_1kkc0")
+
+[node name="BootWitch" type="Sprite2D" parent="Win"]
+position = Vector2(575, 484)
+scale = Vector2(0.187135, 0.187135)
+texture = ExtResource("3_318vg")
+
+[node name="BootGoblinL" type="Sprite2D" parent="Win"]
+position = Vector2(455, 553)
+scale = Vector2(0.111354, 0.111354)
+texture = ExtResource("4_w8tcp")
+
+[node name="BootGoblinR" type="Sprite2D" parent="Win"]
+position = Vector2(659, 559)
+scale = Vector2(0.111354, 0.111354)
+texture = ExtResource("4_w8tcp")
+flip_h = true
+
+[node name="Congratulations" type="Label" parent="Win"]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Congratulations!!"
+label_settings = SubResource("LabelSettings_318vg")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Win"]
+offset_left = 30.0
+offset_top = 194.0
+offset_right = 1124.0
+offset_bottom = 642.0
+text = "Congratulations! You have defeated the Boot Witch and her evil army of Boot Goblins. With their reign of terror brought to an end, the world can finally rest in peace. "
+label_settings = SubResource("LabelSettings_w8tcp")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MenuButton" type="Button" parent="Win"]
+offset_left = 54.0
+offset_top = 410.0
+offset_right = 394.0
+offset_bottom = 518.0
+action_mode = 0
+script = ExtResource("5_fjv1a")
+
+[node name="Label" type="Label" parent="Win/MenuButton"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 108.0
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_fjv1a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Win"]
+offset_left = 765.0
+offset_top = 415.0
+offset_right = 1105.0
+offset_bottom = 523.0
+action_mode = 0
+script = ExtResource("6_0ivg5")
+
+[node name="Label" type="Label" parent="Win/ExitButton"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 108.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_0ivg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartMenu" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="StartMenu"]
+position = Vector2(582, 383.5)
+scale = Vector2(0.634259, 0.532639)
+texture = ExtResource("7_1kkc0")
+
+[node name="BootWitch" type="Sprite2D" parent="StartMenu"]
+position = Vector2(575, 484)
+scale = Vector2(0.187135, 0.187135)
+texture = ExtResource("3_318vg")
+
+[node name="BootGoblinL" type="Sprite2D" parent="StartMenu"]
+position = Vector2(455, 553)
+scale = Vector2(0.111354, 0.111354)
+texture = ExtResource("4_w8tcp")
+
+[node name="BootGoblinR" type="Sprite2D" parent="StartMenu"]
+position = Vector2(659, 559)
+scale = Vector2(0.111354, 0.111354)
+texture = ExtResource("4_w8tcp")
+flip_h = true
+
+[node name="Title" type="Label" parent="StartMenu"]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Jasmine's Boot Blast"
+label_settings = SubResource("LabelSettings_318vg")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="StartMenu"]
+offset_left = 30.0
+offset_top = 194.0
+offset_right = 1124.0
+offset_bottom = 642.0
+text = "The boot witch and her evil army of boot goblins are trying to stealing Jasmine's magic boots you must stop them and find the boots before its to late!!"
+label_settings = SubResource("LabelSettings_w8tcp")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="StartButton" type="Button" parent="StartMenu"]
+offset_left = 54.0
+offset_top = 410.0
+offset_right = 394.0
+offset_bottom = 518.0
+action_mode = 0
+script = ExtResource("7_0ivg5")
+
+[node name="Label" type="Label" parent="StartMenu/StartButton"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 108.0
+text = "Start!"
+label_settings = SubResource("LabelSettings_fjv1a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="StartMenu"]
+offset_left = 765.0
+offset_top = 415.0
+offset_right = 1105.0
+offset_bottom = 523.0
+action_mode = 0
+script = ExtResource("6_0ivg5")
+
+[node name="Label" type="Label" parent="StartMenu/ExitButton"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 108.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_0ivg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadingLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="LoadingBlank" type="ColorRect" parent="LoadingLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(30.8649, 30.8649)
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="GameOver/MenuButton" to="GameOver/MenuButton" method="_on_pressed"]
+[connection signal="pressed" from="GameOver/ExitButton" to="GameOver/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="Win/MenuButton" to="Win/MenuButton" method="_on_pressed"]
+[connection signal="pressed" from="Win/ExitButton" to="Win/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="StartMenu/StartButton" to="StartMenu/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="StartMenu/ExitButton" to="StartMenu/ExitButton" method="_on_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6tmmiys03t5r"]
+
+[ext_resource type="PackedScene" uid="uid://twrh488ngxr4" path="res://level/Level 1.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://dkfcq7i7wn5lj" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://0tbyjmgrxf4g" path="res://player/player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bvdu1bp342y51" path="res://hud/hud.tscn" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://c03ffrgvq1xqg" path="res://assets/audio/bootncats.wav" id="5_lquwl"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+level1 = ExtResource("1_0xm2m")
+player = ExtResource("2_h2yge")
+
+[node name="Hud" parent="." instance=ExtResource("3_h2yge")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(398, 1952)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lquwl")
+volume_db = -10.0
+
+[connection signal="game_over_signal" from="Hud" to="." method="_on_hud_game_over_signal"]
+[connection signal="won_signal" from="Hud" to="." method="_on_hud_won_signal"]
+[connection signal="pressed" from="Hud/StartMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+
+[editable path="Hud"]

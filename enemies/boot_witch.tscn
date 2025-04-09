@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyehhxid0dspw"]
+
+[ext_resource type="Script" uid="uid://b62lquni6xmmu" path="res://enemies/enemy.gd" id="1_ml6h3"]
+[ext_resource type="Texture2D" uid="uid://7tq28lxeqpye" path="res://assets/enemies/boot_witch.png" id="2_ml6h3"]
+[ext_resource type="AudioStream" uid="uid://642njaeilhhe" path="res://assets/audio/enemyhurt.wav" id="3_owknq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkpm5"]
+size = Vector2(85.8067, 137.526)
+
+[node name="BootWitch" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_ml6h3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.125, -25.2973)
+scale = Vector2(0.0884333, 0.0884333)
+texture = ExtResource("2_ml6h3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.75, -25.9673)
+scale = Vector2(0.850749, 0.850749)
+shape = SubResource("RectangleShape2D_bkpm5")
+
+[node name="LeftDownRay" type="RayCast2D" parent="."]
+position = Vector2(0.250004, -8.46725)
+target_position = Vector2(-52.25, 44.4673)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+position = Vector2(0.250004, -8.46725)
+target_position = Vector2(-52.25, 0.467255)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="RightDownRay" type="RayCast2D" parent="."]
+position = Vector2(0.250004, -8.46725)
+target_position = Vector2(62.75, 44.4673)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="RightRay" type="RayCast2D" parent="."]
+position = Vector2(0.250004, -8.46725)
+target_position = Vector2(63.75, 0.467255)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_owknq")

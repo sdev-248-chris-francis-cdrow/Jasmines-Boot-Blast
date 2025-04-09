@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5x4mxojvu1d7"]
+
+[ext_resource type="Texture2D" uid="uid://bb67htk7xq1kb" path="res://assets/blocks/metal.png" id="1_a74si"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qhba"]
+size = Vector2(64, 64)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0446181, 0.0446181)
+texture = ExtResource("1_a74si")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7qhba")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqajijqidme1m"]
+
+[ext_resource type="Script" uid="uid://brlqlg6k671u4" path="res://blocks/death_plane.gd" id="1_piq2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfw8"]
+size = Vector2(62, 62)
+
+[node name="DeathPlane" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_piq2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cbfw8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

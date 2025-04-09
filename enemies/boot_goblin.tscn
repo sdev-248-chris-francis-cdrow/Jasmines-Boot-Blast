@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dikc2t8bnk5ah"]
+
+[ext_resource type="Texture2D" uid="uid://di1mo242dyk7o" path="res://assets/enemies/boot_goblin.png" id="1_3200u"]
+[ext_resource type="Script" uid="uid://b62lquni6xmmu" path="res://enemies/enemy.gd" id="1_bkpm5"]
+[ext_resource type="AudioStream" uid="uid://642njaeilhhe" path="res://assets/audio/enemyhurt.wav" id="3_66d7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkpm5"]
+size = Vector2(43.4911, 68.25)
+
+[node name="BootGoblin" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_bkpm5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.20452, 0.108152)
+scale = Vector2(0.0733427, 0.0624771)
+texture = ExtResource("1_3200u")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 1.49012e-08)
+scale = Vector2(0.850749, 0.850749)
+shape = SubResource("RectangleShape2D_bkpm5")
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-37, 0)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="LeftDownRay" type="RayCast2D" parent="."]
+target_position = Vector2(-37, 36)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(38, 0)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="RightDownRay" type="RayCast2D" parent="."]
+target_position = Vector2(37, 36)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_66d7q")

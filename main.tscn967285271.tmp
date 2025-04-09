@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6tmmiys03t5r"]
+
+[ext_resource type="PackedScene" uid="uid://twrh488ngxr4" path="res://level/Level 1.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://dkfcq7i7wn5lj" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://0tbyjmgrxf4g" path="res://player/player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bvdu1bp342y51" path="res://hud/hud.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+level1 = ExtResource("1_0xm2m")
+player = ExtResource("2_h2yge")
+
+[node name="Hud" parent="." instance=ExtResource("3_h2yge")]
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(533, 1787)
+
+[editable path="Hud"]

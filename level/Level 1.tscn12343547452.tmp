@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=4 uid="uid://twrh488ngxr4"]
+
+[ext_resource type="PackedScene" uid="uid://bpcxtnw5c8iu7" path="res://blocks/brick_block.tscn" id="1_7o4kt"]
+[ext_resource type="PackedScene" uid="uid://c7pgvvipja0og" path="res://blocks/question_block.tscn" id="2_rdh0o"]
+[ext_resource type="PackedScene" uid="uid://bwhqixo6ql762" path="res://items/boots_blue.tscn" id="4_31stx"]
+[ext_resource type="PackedScene" uid="uid://bnjh14goef4w2" path="res://blocks/grass_block.tscn" id="4_gf0l8"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gf0l8"]
+scenes/1/scene = ExtResource("1_7o4kt")
+scenes/2/scene = ExtResource("2_rdh0o")
+scenes/3/scene = ExtResource("4_gf0l8")
+scenes/4/scene = ExtResource("4_31stx")
+
+[sub_resource type="TileSet" id="TileSet_31stx"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_gf0l8")
+
+[node name="1-1" type="Node2D"]
+
+[node name="Level1" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAcACAAAAAAAAAAAQAdACAAAAAAAAAAAQAAACAAAAAAAAAAAwABACAAAAAAAAAAAwACACAAAAAAAAAAAwADACAAAAAAAAAAAwAEACAAAAAAAAAAAwAFACAAAAAAAAAAAwAGACAAAAAAAAAAAwAHACAAAAAAAAAAAwAIACAAAAAAAAAAAwAJACAAAAAAAAAAAwAKACAAAAAAAAAAAwALACAAAAAAAAAAAwAMACAAAAAAAAAAAwANACAAAAAAAAAAAwAOACAAAAAAAAAAAwAPACAAAAAAAAAAAwAQABwAAAAAAAAAAgAQACAAAAAAAAAAAwARACAAAAAAAAAAAwASACAAAAAAAAAAAwATACAAAAAAAAAAAwAUABwAAAAAAAAAAQAUACAAAAAAAAAAAwAVABwAAAAAAAAAAgAVACAAAAAAAAAAAwAWABgAAAAAAAAAAgAWABwAAAAAAAAAAQAWACAAAAAAAAAAAwAXABwAAAAAAAAAAgAXACAAAAAAAAAAAwAYABwAAAAAAAAAAQAYACAAAAAAAAAAAwAZACAAAAAAAAAAAwAaACAAAAAAAAAAAwAbACAAAAAAAAAAAwAcAB4AAAAAAAAAAQAcAB8AAAAAAAAAAQAdAB4AAAAAAAAAAQAdAB8AAAAAAAAAAQAPAB4AAAAAAAAABAA=")
+tile_set = SubResource("TileSet_31stx")

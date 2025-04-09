@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkterlti4c5ur"]
+
+[ext_resource type="Script" uid="uid://xrhy7lccqro7" path="res://blocks/question_block.gd" id="1_pgmjd"]
+[ext_resource type="PackedScene" uid="uid://bwhqixo6ql762" path="res://items/boots_blue.tscn" id="2_lehml"]
+[ext_resource type="PackedScene" uid="uid://87106qdkrntn" path="res://items/boots_yellow.tscn" id="3_3agvc"]
+[ext_resource type="PackedScene" uid="uid://dcp8s4ty8wd7b" path="res://items/boots_rainbow.tscn" id="4_a7fkb"]
+[ext_resource type="PackedScene" uid="uid://bvg12eh4jrmvb" path="res://items/coin.tscn" id="5_sxp2l"]
+[ext_resource type="PackedScene" uid="uid://bl0ej5346csgt" path="res://items/shoe_glue.tscn" id="6_t6w0u"]
+[ext_resource type="Texture2D" uid="uid://1iplalovwvwy" path="res://assets/blocks/question_brick_active.png" id="7_y43ym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc25m"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2ra5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y43ym")
+}],
+"loop": false,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ra5"]
+size = Vector2(64, 66)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_pgmjd")
+boots_blue = ExtResource("2_lehml")
+boots_yellow = ExtResource("3_3agvc")
+boots_rainbow = ExtResource("4_a7fkb")
+coin = ExtResource("5_sxp2l")
+shoe_glue = ExtResource("6_t6w0u")
+item = "shoe_glue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xc25m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k2ra5")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_k2ra5")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

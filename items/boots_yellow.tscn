@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://87106qdkrntn"]
+
+[ext_resource type="Script" uid="uid://d0d63e2omqpm1" path="res://items/boots.gd" id="1_3tj18"]
+[ext_resource type="Texture2D" uid="uid://dbi2mq4ro8qr3" path="res://assets/items/boots_yellow.png" id="1_oi1sr"]
+[ext_resource type="AudioStream" uid="uid://4l7v731qtj78" path="res://assets/audio/boot.wav" id="3_8cogc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfw8"]
+size = Vector2(62, 62)
+
+[node name="BootsYellow" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_3tj18")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("1_oi1sr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cbfw8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8cogc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl0ej5346csgt"]
+
+[ext_resource type="Script" uid="uid://bbk3018db1tdu" path="res://items/shoe_glue.gd" id="1_gi40x"]
+[ext_resource type="Texture2D" uid="uid://bvaxgwv6l5kcv" path="res://assets/items/show_glue.png" id="2_su323"]
+[ext_resource type="AudioStream" uid="uid://djw227avcyvwo" path="res://assets/audio/shoe_glue.wav" id="3_s2x5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfw8"]
+size = Vector2(62, 62)
+
+[node name="ShoeGlue" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_gi40x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(0.0910588, 0.0910588)
+texture = ExtResource("2_su323")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cbfw8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s2x5e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
