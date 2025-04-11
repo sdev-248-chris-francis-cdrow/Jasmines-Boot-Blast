@@ -24,6 +24,7 @@ func reload() -> void:
 
 func _on_start_button_pressed() -> void:
 	load_level()
+	await get_tree().create_timer(0.2).timeout
 	$Player.reset(Vector2(398,1952))
 	$AudioStreamPlayer.play()
 
